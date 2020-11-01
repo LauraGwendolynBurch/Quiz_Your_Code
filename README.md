@@ -2,14 +2,14 @@
 
 * setInterval to do the "timed" functionality
 
-* clearInterval to stop the timeout
 
-* var currrentScore, timeLeft, 
+
+* var currrentScore,
 
 * Loop through question 
 var pointer/index - current positioin in the array
 var questions - Array object
-var startButton
+
 ---
 var questioins = [
     {

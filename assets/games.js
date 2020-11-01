@@ -2,10 +2,41 @@
 var startButton = document.getElementById("button");
 var timeLeft = 120;
 var timeEl = document.getElementById("timer");
+var questionsEl = document.getElementById("question");
+
+var questions = [
+    {   
+        text:"hfoab",
+        choices:["ajo","ojfa","foafjk","jaksfjo",],
+        answer:"ojfa"
+    },
+    {
+        text:"",
+        choices:"",
+        answer:"",
+    },
+    {
+        text:"",
+        choices:"",
+        answer:"",
+    },
+    {
+        text:"",
+        choices:"",
+        answer:"",
+    },
+    {
+        text:"",
+        choices:"",
+        answer:"",
+    }, 
+]
+
 
 function buttonClick(){
     setTime();
-    console.log("click?"); 
+    showQuestion();
+    // console.log("click?"); 
 }
 
 function setTime() {
@@ -19,6 +50,12 @@ function setTime() {
     }
 
   }, 1000);
+}
+
+function showQuestion(){
+    questionsEl.textContent = questions[0].text;
+
+
 }
 
 startButton.addEventListener("click",buttonClick);
