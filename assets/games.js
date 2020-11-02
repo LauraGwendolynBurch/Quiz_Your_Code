@@ -1,11 +1,12 @@
 //make a button
 //identify all global variables 
 var startButton = document.getElementById("button");
-var timeLeft = 120;
+var timeLeft = 60;
 var timeEl = document.getElementById("timer");
 var questionsEl = document.getElementById("question");
 var choicesEl= document.getElementById("choices");
 var answerEl = document.getElementById("answer");
+var wrongOrRight = document.getElementById("correctOrNot")
 //put quesions and answers into an object
 var questions = [
     {   
@@ -35,9 +36,16 @@ var questions = [
     }, 
 ]
 
+//Set style attributes 
+timeEl.setAttribute ("style", "color:blueviolet; padding:5px; margin-right:35px;");
+
+
+
 function buttonClick(){
     setTime();
     showQuestion();
+    
+
     // console.log("click?"); 
 }
 
@@ -56,9 +64,9 @@ function showQuestion(){
     for (var i = 0; i < questions[0].choices.length; i++) {
         var buttonEl = document.createElement("button")
         var pEl = document.createElement("p")
-        pEl.append(questions[0].choices[i])
-        pEl.append(buttonEl)
-        choicesEl.append(pEl)
+        pEl.appendChild(questions[0].choices[i])
+        pEl.appendChild(buttonEl)
+        choicesEl.appendChild(pEl)
     }
     
 }
