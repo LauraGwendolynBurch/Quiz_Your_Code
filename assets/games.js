@@ -4,11 +4,12 @@ var startButton = document.getElementById("button");
 var timeLeft = 120;
 var timeEl = document.getElementById("timer");
 var questionsEl = document.getElementById("question");
-var choicesEl= document.getElementById("choices")
-
+var choicesEl= document.getElementById("choices");
+var answerEl = document.getElementById("answer");
+//put quesions and answers into an object
 var questions = [
     {   
-        text:"1. Which civilisation is credited with creating the first circuses?",
+        text:"1. Which civilization is credited with creating the first circus?",
         choices:["a. Sumerians","b. Romans","c. Chinese","d. Egyptians",],
         answer:"b. Romans"
     },
@@ -18,7 +19,7 @@ var questions = [
         answer:"b. The Wallendas",
     },
     {
-        text:"3. In circus parlance, what is a funambulist?",
+        text:"3. In circus what is a funambulist?",
         choices:["a. A tightrope walker", "b. A clown", "c. A juggler", "d. The Ringmaster",],
         answer:"a. A tightrope walker",
     },
@@ -34,7 +35,6 @@ var questions = [
     }, 
 ]
 
-
 function buttonClick(){
     setTime();
     showQuestion();
@@ -45,13 +45,10 @@ function setTime() {
   var timerInterval = setInterval(function() {
     timeLeft--;
     timeEl.textContent = timeLeft;
-
     if(timeLeft === 0) {
-      clearInterval(timerInterval);
-      console.log("time is up")
-    }
-
-  }, 1000);
+            clearInterval(timerInterval);
+        }
+    }, 1000);
 }
 
 function showQuestion(){

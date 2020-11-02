@@ -4,14 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Your Code</title>
-   
+    <link rel="stylesheet" href="./assets/reset.css" />
+    <link rel="stylesheet" href="./assets/style.css"/>
 </head>
+
 <body>
-   <button id="button">START</button>
-   <div id="timer"></div>
-   <div id="question"></div>
-   <div id="choices"></div>
+   
+    <Header id="timer">
+        <a href="./winner.html">View Highscores</a>
+        <h1>Time</h1>
+    </Header>
+    <main>
+        <P>Try to answer the following questions within the time limit.  Keep in mind that incorrect answers will penalize your score/time by 10 seconds!</P>
+        <button id="button">START</button>
+    </main>
+    
+
+    <section id="question">
+        <h1 id="choices"></h1>
+        <h2 id="answer"></h2>
+    </section>
+
     <script src="./assets/games.js"></script>
-    </script>
+   
 </body>
 </html>
