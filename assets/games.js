@@ -6,7 +6,7 @@ var timeEl = document.getElementById("timer");
 var questionsEl = document.getElementById("question");
 var choicesEl= document.getElementById("choices");
 var answerEl = document.getElementById("answer");
-var wrongOrRight = document.getElementById("correctOrNot")
+// var wrongOrRight = document.getElementById("correctOrNot")
 //put quesions and answers into an object
 var questions = [
     {   
@@ -42,10 +42,10 @@ timeEl.setAttribute ("style", "color:blueviolet; padding:5px; margin-right:35px;
 
 
 function buttonClick(){
+    var introEl = document.getElementById("intro");
+    introEl.textContent = "";
     setTime();
-    showQuestion();
-    
-
+    showQuestion(0);
     // console.log("click?"); 
 }
 
@@ -59,16 +59,33 @@ function setTime() {
     }, 1000);
 }
 
-function showQuestion(){
-    questionsEl.textContent = questions[0].text;
-    for (var i = 0; i < questions[0].choices.length; i++) {
-        var buttonEl = document.createElement("button")
-        var pEl = document.createElement("p")
-        pEl.appendChild(questions[0].choices[i])
-        pEl.appendChild(buttonEl)
-        choicesEl.appendChild(pEl)
-    }
+function choicesClick(){
+    // console.log(this)
+    if (this.value === "Wrong!"){
+        // run wrong fun
     
+    } else if (this.value === "Correct!"){
+        //run correct fun
+    }
 }
+
+function showQuestion(index){
+    questionsEl.textContent = questions[index].text;
+    for (var i = 0; i < questions[index].choices.length; i++) {
+        var buttonEl = document.createElement("button");
+        var pEl = document.createElement("p");
+        if (questions[index].choices[i] === questions[index].answer){
+            buttonEl.setAttribute("value", "Correct!")
+        } else {
+            buttonEl.setAttribute("value", "Wrong!")
+        }
+        pEl.append(questions[index].choices[i]);
+        pEl.append(buttonEl);
+        choicesEl.append(pEl);
+        questionsEl.append(choicesEl);
+        buttonEl.addEventListener("click",choicesClick);
+
+    };
+};
 
 startButton.addEventListener("click",buttonClick);
