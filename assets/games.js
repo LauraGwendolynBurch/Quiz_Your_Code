@@ -53,8 +53,9 @@ function setTime() {
   var timerInterval = setInterval(function() {
     timeLeft--;
     timeEl.textContent = timeLeft;
-    if(timeLeft === 0) {
+    if(timeLeft === 0 || questionIndex == questions.length) {
             clearInterval(timerInterval);
+            
         }
     }, 1000);
 };
@@ -79,27 +80,40 @@ function wrongAnswer(){
     choicesEl.innerHTML = ""
     var wrongEl = document.createElement("p")
     wrongEl.innerText = "Wrong!";
+    timeLeft -= 10;
     wrongOrRightText.append(wrongEl);
     setTimeout(function(){
         wrongOrRightText.innerHTML="";
         questionIndex += 1
         showQuestion(questionIndex);
-    },2000)
+       
+        
+    },1000)
 }
 
 function rightAnswer(){
     choicesEl.innerHTML = ""
     var rightEl = document.createElement("p") 
+    timeLeft += 10;
     rightEl.innerText = "Correct!"
     wrongOrRightText.append(rightEl);
     setTimeout(function(){
         wrongOrRightText.innerHTML="";
         questionIndex += 1
         showQuestion(questionIndex);
-    },2000)
+    },1000)
+}
+
+function gameOver(){
+    questionsEl.innerHTML = ""
+    score = timeLeft;
+    var gameOverEl = document.createElement("p") 
+    gameOverEl.innerText = "Final Score" + score
+    wrongOrRightText.append(gameOverEl);
 }
 
 function showQuestion(index){
+    if (index < questions.length){
     questionsEl.textContent = questions[index].text;
     for (var i = 0; i < questions[index].choices.length; i++) {
        
@@ -117,6 +131,10 @@ function showQuestion(index){
         questionsEl.append(wrongOrRightText);
         buttonEl.addEventListener("click",choicesClick);
     };
+   } else {
+     gameOver();
+   };
+    
 };
 
 startButton.addEventListener("click",buttonClick);
