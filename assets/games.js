@@ -7,6 +7,7 @@ var questionsEl = document.getElementById("question");
 var choicesEl= document.getElementById("choices");
 var answerEl = document.getElementById("answer");
 var score = 0;
+var wrongOrRightText = document.getElementById("wrongOrRight");
 //put quesions and answers into an object
 var questions = [
     {   
@@ -35,6 +36,7 @@ var questions = [
         answer:"d. Philip Astley",
     }, 
 ]
+var questionIndex = 0;
 
 //Set style attributes 
 timeEl.setAttribute ("style", "color:blueviolet; padding:5px; margin-right:35px;");
@@ -43,7 +45,7 @@ function buttonClick(){
     var introEl = document.getElementById("intro");
     introEl.textContent = "";
     setTime();
-    showQuestion(0);
+    showQuestion(questionIndex);
     // console.log("click?"); 
 }
 
@@ -58,34 +60,50 @@ function setTime() {
 };
 
 function choicesClick(event){
-    // console.log(event)
+    console.log(event.target.value)
     event.preventDefault();
     if (event.target.value === "Wrong!"){
+        console.log("wrong")
         // run wrong function
         wrongAnswer();
         
     //     
     } else if (event.target.value === "Correct!"){
+        console.log("right")
         //run correct function
         rightAnswer();
     };
 }
 
 function wrongAnswer(){
-    var wrongEl = document.createElement("h2") 
-    wrongEl.innerHtml = "Wrong!";
-    wrongEl.append("h2");
+    var wrongEl = document.createElement("p")
+    wrongEl.innerText = "Wrong!";
+    wrongOrRightText.append(wrongEl);
+    setTimeout(function(){
+        wrongOrRightText.innerHTML="";
+        questionIndex += 1
+        showQuestion(questionIndex);
+
+    },2000)
+
 }
 
 function rightAnswer(){
-    var rightEl = document.createElement("h2") 
-    rightEl.innerHtml = "Correct!"
-    rightEl.append("h2");
+    var rightEl = document.createElement("p") 
+    rightEl.innerText = "Correct!"
+    wrongOrRightText.append(rightEl);
+    setTimeout(function(){
+        wrongOrRightText.innerHTML="";
+        questionIndex += 1
+        showQuestion(questionIndex);
+
+    },2000)
 }
 
 function showQuestion(index){
     questionsEl.textContent = questions[index].text;
     for (var i = 0; i < questions[index].choices.length; i++) {
+       
         var buttonEl = document.createElement("button");
         var pEl = document.createElement("p");
         if (questions[index].choices[i] === questions[index].answer){
@@ -97,8 +115,8 @@ function showQuestion(index){
         pEl.append(buttonEl);
         choicesEl.append(pEl);
         questionsEl.append(choicesEl);
+        questionsEl.append(wrongOrRightText);
         buttonEl.addEventListener("click",choicesClick);
-
     };
 };
 
