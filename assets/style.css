@@ -32,25 +32,21 @@ button {
     background-color: blueviolet;
     color: bisque;
     margin: 35px;
-  }
+}
 
-  div {
+div {
       font-size: 3em;
       text-align: center;
       margin-top: 35px;
       font-weight: bolder;
-  }
+}
 
-  main h1 {
+main h1 {
     font-size: 3em;
     text-align: center;
     margin: 35px;
     font-weight: bolder;
 }
 
-/* p {
-    font-size: 2em;
-    width: 50%;
-    text-align: center;
-} */
+
 

@@ -6,7 +6,7 @@ var timeEl = document.getElementById("timer");
 var questionsEl = document.getElementById("question");
 var choicesEl= document.getElementById("choices");
 var answerEl = document.getElementById("answer");
-// var wrongOrRight = document.getElementById("correctOrNot")
+var score = 0;
 //put quesions and answers into an object
 var questions = [
     {   
@@ -39,8 +39,6 @@ var questions = [
 //Set style attributes 
 timeEl.setAttribute ("style", "color:blueviolet; padding:5px; margin-right:35px;");
 
-
-
 function buttonClick(){
     var introEl = document.getElementById("intro");
     introEl.textContent = "";
@@ -57,16 +55,32 @@ function setTime() {
             clearInterval(timerInterval);
         }
     }, 1000);
+};
+
+function choicesClick(event){
+    // console.log(event)
+    event.preventDefault();
+    if (event.target.value === "Wrong!"){
+        // run wrong function
+        wrongAnswer();
+        
+    //     
+    } else if (event.target.value === "Correct!"){
+        //run correct function
+        rightAnswer();
+    };
 }
 
-function choicesClick(){
-    // console.log(this)
-    if (this.value === "Wrong!"){
-        // run wrong fun
-    
-    } else if (this.value === "Correct!"){
-        //run correct fun
-    }
+function wrongAnswer(){
+    var wrongEl = document.createElement("h2") 
+    wrongEl.innerHtml = "Wrong!";
+    wrongEl.append("h2");
+}
+
+function rightAnswer(){
+    var rightEl = document.createElement("h2") 
+    rightEl.innerHtml = "Correct!"
+    rightEl.append("h2");
 }
 
 function showQuestion(index){
