@@ -76,6 +76,7 @@ function choicesClick(event){
 }
 
 function wrongAnswer(){
+    choicesEl.innerHTML = ""
     var wrongEl = document.createElement("p")
     wrongEl.innerText = "Wrong!";
     wrongOrRightText.append(wrongEl);
@@ -83,12 +84,11 @@ function wrongAnswer(){
         wrongOrRightText.innerHTML="";
         questionIndex += 1
         showQuestion(questionIndex);
-
     },2000)
-
 }
 
 function rightAnswer(){
+    choicesEl.innerHTML = ""
     var rightEl = document.createElement("p") 
     rightEl.innerText = "Correct!"
     wrongOrRightText.append(rightEl);
@@ -96,7 +96,6 @@ function rightAnswer(){
         wrongOrRightText.innerHTML="";
         questionIndex += 1
         showQuestion(questionIndex);
-
     },2000)
 }
 
