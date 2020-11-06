@@ -11,27 +11,27 @@ var wrongOrRightText = document.getElementById("wrongOrRight");
 //put quesions and answers into an object
 var questions = [
     {   
-        text:"1. Which civilization is credited with creating the first circus?",
+        text:"Which civilization is credited with creating the first circus?",
         choices:["a. Sumerians","b. Romans","c. Chinese","d. Egyptians",],
         answer:"b. Romans"
     },
     {
-        text:"2. In 1947, which famous family achieved a seven-person pyramid on a high-wire, 35 feet above the ground?",
+        text:"In 1947, which famous family achieved a seven-person pyramid on a high-wire, 35 feet above the ground?",
         choices:["a. The Barnums", "b. The Wallendas", "c. The Partridge Family", "d. The Wallace Troupe",],
         answer:"b. The Wallendas",
     },
     {
-        text:"3. In circus what is a funambulist?",
+        text:"In circus what is a funambulist?",
         choices:["a. A tightrope walker", "b. A clown", "c. A juggler", "d. The Ringmaster",],
         answer:"a. A tightrope walker",
     },
     {
-        text:"4. What happened at the Ringling Bros and Barnum and Bailey Circus at Hartford, Connecticut on July 6, 1944?",
+        text:"What happened at the Ringling Bros and Barnum and Bailey Circus at Hartford, Connecticut on July 6, 1944?",
         choices:["a. Animal lovers released all the animals", "b. The tent caught on fire", "c. The lion-tamer was eaten by his lions", "d. The high-wire snapped, resulting in the death of several performers",],
         answer:"b. The tent caught on fire",
     },
     {
-        text:"5. Who is credited with building the first permanent circus building, and also inventing the circus 'ring' in 1769? ",
+        text:"Who is credited with building the first permanent circus building, and also inventing the circus 'ring' in 1769? ",
         choices:["a. P.T. Barnum", "b. Thomas Edison", "c. Brendan Shelper", "d. Philip Astley",],
         answer:"d. Philip Astley",
     }, 
@@ -86,8 +86,6 @@ function wrongAnswer(){
         wrongOrRightText.innerHTML="";
         questionIndex += 1
         showQuestion(questionIndex);
-       
-        
     },1000)
 }
 
@@ -105,11 +103,14 @@ function rightAnswer(){
 }
 
 function gameOver(){
-    questionsEl.innerHTML = ""
     score = timeLeft;
     var gameOverEl = document.createElement("p") 
-    gameOverEl.innerText = "Final Score" + score
+    gameOverEl.innerText = ("Final Score " + score)
     wrongOrRightText.append(gameOverEl);
+    
+    setTimeout (function(){
+        window.location.assign('./score.html');
+        }, 3000);
 }
 
 function showQuestion(index){
@@ -133,6 +134,7 @@ function showQuestion(index){
     };
    } else {
      gameOver();
+     
    };
     
 };
