@@ -41,6 +41,7 @@ var questionIndex = 0;
 //Set style attributes 
 timeEl.setAttribute ("style", "color:blueviolet; padding:5px; margin-right:35px;");
 
+// clears the intro page text and calls next two functions (starts time and shows questions)
 function buttonClick(){
     var introEl = document.getElementById("intro");
     introEl.textContent = "";
@@ -49,6 +50,7 @@ function buttonClick(){
     // console.log("click?"); 
 }
 
+// starts timer and stops it to set score
 function setTime() {
   var timerInterval = setInterval(function() {
     timeLeft--;
@@ -60,22 +62,24 @@ function setTime() {
     }, 1000);
 };
 
+// targets if the answer is wrong or right and calls the matching function
 function choicesClick(event){
-    console.log(event.target.value)
+    // console.log(event.target.value)
     event.preventDefault();
     if (event.target.value === "Wrong!"){
-        console.log("wrong")
+        // console.log("wrong")
         // run wrong function
         wrongAnswer();
         
     //     
     } else if (event.target.value === "Correct!"){
-        console.log("right")
+        //console.log("right")
         //run correct function
         rightAnswer();
     };
 }
 
+// if the answer is wrong it clears the choices, prints wrong, subracts time, and moves to the next question
 function wrongAnswer(){
     choicesEl.innerHTML = ""
     var wrongEl = document.createElement("p")
@@ -89,6 +93,7 @@ function wrongAnswer(){
     },1000)
 }
 
+// if the answer is right it clears the choices, prints correct, adds time, and moves to the next question
 function rightAnswer(){
     choicesEl.innerHTML = ""
     var rightEl = document.createElement("p") 
@@ -102,6 +107,7 @@ function rightAnswer(){
     },1000)
 }
 
+// last function to call at the end of the loop, saves score to local storage, sets score, moves to next html page
 function gameOver(){
     score = timeLeft;
     var gameOverEl = document.createElement("p") 
@@ -111,8 +117,12 @@ function gameOver(){
     setTimeout (function(){
         window.location.assign('./score.html');
         }, 3000);
+    localStorage.setItem("currentScore", JSON.stringify(score));
+    // console.log("currentScore")
+    // console.log(localStorage)
 }
 
+// shows questions and answers, set elements for them in html, and calls clickevent to set answers, once loop through questions calls the game over function
 function showQuestion(index){
     if (index < questions.length){
     questionsEl.textContent = questions[index].text;
@@ -139,4 +149,5 @@ function showQuestion(index){
     
 };
 
+// starts the entire game and calls the next functions inside buttonClick
 startButton.addEventListener("click",buttonClick);
