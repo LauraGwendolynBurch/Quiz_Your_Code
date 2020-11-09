@@ -8,3 +8,5 @@ if (typeof(Storage) !== "undefined") {
 } else {
     document.getElementById("highscoreWinner").innerHTML = "N/A";
 }
+
+
