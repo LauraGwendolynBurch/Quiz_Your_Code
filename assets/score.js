@@ -2,7 +2,9 @@
 var formEl = document.querySelector("#highscoreWinner");
 var listEl = document.querySelector("#initals");
 
-
-localStorage.getItem("currentScore")
-// console.log("currentScore")
-formEl.innerhtml = ("Your final score is" + "currentScore")
+//print your score 
+if (typeof(Storage) !== "undefined") {
+   document.getElementById("highscoreWinner").innerHTML = "Your final score is " + localStorage.getItem("currentScore");
+} else {
+    document.getElementById("highscoreWinner").innerHTML = "N/A";
+}
