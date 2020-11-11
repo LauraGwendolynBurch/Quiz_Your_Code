@@ -19,7 +19,7 @@ Here we attempt to build a mulitiple choice quiz.  Once you click the start butt
 ![ Image Project ](./images/code3.png)
 
 ## User Notes
- I would like to add more circus fun to the style of this quiz. I will revisit this and make it so you also can not inspect the window and see the answers to the code. When the final question shows I would like to find a way to make it go away and just present the score.  I was also not yet able to make the clear highscore button.  
+ I would like to add more circus fun to the style of this quiz. I will revisit this and make it so you also can not inspect the window and see the answers to the code. When the final question shows I would like to find a way to make it go away and just present the score.  
 
 ## License
 N/A

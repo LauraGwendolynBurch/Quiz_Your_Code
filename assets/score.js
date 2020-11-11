@@ -1,4 +1,4 @@
-
+//create variables 
 var formEl = document.querySelector("#highscoreWinner");
 var listEl = document.querySelector("#initals");
 var currentScore = localStorage.getItem("currentScore")
